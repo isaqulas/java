@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
+
 public class Main{
 
-	//Scanner texto = new Scanner(System.in());
+	
 
 	static int[] mySortc(int arr[])
 	{
@@ -19,30 +20,6 @@ public class Main{
 		return arr;
 	}
 
-static int[] SelectionSort(int[] vetor) 
-{ 
-    int min, aux;
-    for (int i = 0; i < vetor.length-1; i++)
-    {
-        min = i;
-        for (int j = (i+1); j < vetor.length; j++)
-        {
-            if (vetor[j] < vetor[min])
-            {
-                min = j;
-            }
-        }
-        if (vetor[i] != vetor[min])
-        {
-            aux = vetor[i];
-            vetor[i] = vetor[min];
-            vetor[min] = aux;
-        }
-    }
-	return vetor;
-}
-
-
 	static int[] mySortd(int arr[])
 	{
 		for(int i = 0; i < arr.length; i++){
@@ -58,13 +35,46 @@ static int[] SelectionSort(int[] vetor)
 		return arr;
 	}
 
+	static void clear(){
+		System.out.print("\033\143");
+	}
+	
+	static void help(){
+		clear();
+		System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
+	}
+
+
 
 
 	public static void main(String[] args) {
-		int arr[] = {0, 3, 5, 6, 9, 2};
-		int arr2[] = SelectionSort(arr);
-		for(int i : arr2){
-		System.out.println(i);
+		if(args.length >= 1){
+			if (args[0].equals("h")){
+				System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
+				//help();
+		}
+		System.out.println(args[0]);
+		}
+		else {
+		
+			while (true){
+				Scanner inputa = new Scanner(System.in);	
+				String texto = inputa.next();
+				inputa.close();
+				if(texto.equals("exit")){
+					break;
+				}
+				else{
+
+					int arr[] = {0, 3, 5, 6, 9, 2};
+					int arr2[] = mySortc(arr);
+					for(int i : arr2){
+						System.out.print(i + ", ");
+					}
+					System.out.println();
+				}
+				
+			}
 		}
 	}
 }
