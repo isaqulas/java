@@ -7,15 +7,23 @@ public class Main{
 
 	static int[] mySortc(int arr[])
 	{
+		
 		for(int i = 0; i < arr.length; i++){
-			int Small = arr[i];
+			int Small = i;
 			for(int j = i; j < arr.length; j++){
-				if(arr[j] < Small){
-					arr[i] = arr[j];
-					arr[j] = Small;
-					Small = arr[j];
+				if(arr[j] < arr[Small]){
+					
+					Small = j;
+					//System.out.println(Small); --> Debug
 				}
 			}
+			System.out.println();
+
+			int Small2 = arr[Small];
+			arr[Small] = arr[i];
+			arr[i] = Small2;
+			//System.out.println("(" + arr[Small] + " ; " + arr[i] + ")");  --> Debug
+			
 		}
 		return arr;
 	}
@@ -42,6 +50,7 @@ public class Main{
 	static void help(){
 		clear();
 		System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
+		
 	}
 
 
@@ -50,31 +59,37 @@ public class Main{
 	public static void main(String[] args) {
 		if(args.length >= 1){
 			if (args[0].equals("h")){
-				System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
-				//help();
+				//System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
+				help();
 		}
-		System.out.println(args[0]);
 		}
 		else {
-		
-			while (true){
-				Scanner inputa = new Scanner(System.in);	
-				String texto = inputa.next();
-				inputa.close();
-				if(texto.equals("exit")){
-					break;
-				}
-				else{
+			Scanner input = new Scanner(System.in);
 
-					int arr[] = {0, 3, 5, 6, 9, 2};
-					int arr2[] = mySortc(arr);
-					for(int i : arr2){
-						System.out.print(i + ", ");
-					}
-					System.out.println();
+			while (true){
+				
+				String texto = "";
+				if(input.hasNextLine()){
+					texto = input.nextLine();
 				}
 				
+				if(texto.equals("exit"))
+				{
+					break;
+				}
+				String str_arr[] = texto.split(",");
+				int arr[] = new int [str_arr.length];
+				for(int i = 0; i < str_arr.length; i++){
+					arr[i] = Integer.parseInt(str_arr[i]);
+					}
+				int arr2[] = mySortc(arr);
+				clear();
+				for(int i : arr2){
+					System.out.print(i + ", ");
+				}
+				System.out.println();
 			}
+			input.close();
 		}
 	}
 }
