@@ -3,23 +3,18 @@ import java.util.Scanner;
 class sorts{
 	public int[] mySortc(int arr[])
 	{
-		
 		for(int i = 0; i < arr.length; i++){
 			int Small = i;
 			for(int j = i; j < arr.length; j++){
-				if(arr[j] < arr[Small]){
-					
+				if(arr[j] < arr[Small])
+				{
 					Small = j;
-					//System.out.println(Small); --> Debug
 				}
 			}
 			System.out.println();
-
 			int Small2 = arr[Small];
 			arr[Small] = arr[i];
 			arr[i] = Small2;
-			//System.out.println("(" + arr[Small] + " ; " + arr[i] + ")");  --> Debug
-			
 		}
 		return arr;
 	}
@@ -40,24 +35,22 @@ class sorts{
 	}
 }
 
-
-public class Main{
-
-	
-
-	
-
-	static void clear(){
+public class Main
+{
+	static void clear()
+	{
 		System.out.print("\033\143");
 	}
 	
-	static void help(){
+	static void help()
+	{
 		clear();
 		System.out.println("após selecionar a ordem, escreva uma array como essa:\n1,2,3,4,...");
 		
 	}
 
-	static int[] recive_sort(Scanner input){
+	static int[] recive_sort(Scanner input)
+	{
 		String texto = "";
 		if(input.hasNextLine())
 				{
@@ -72,21 +65,25 @@ public class Main{
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		clear();
 		sorts sorts = new sorts();
 		
-		if(args.length >= 1){
+		if(args.length >= 1)
+		{
 			if (args[0].equals("h")){
 				//System.out.println("após executar, escreva uma array como essa:\n1,2,3,4,...");
 				help();
 		}
 		}
-		else {
+		else
+		{
 
 			Scanner input = new Scanner(System.in);
 
-			while (true){
+			while (true)
+			{
 				System.out.println("\ndigite exit/help/crescente/decrescente:\n");
 				int arr2[];
 				String texto = "";
@@ -120,13 +117,12 @@ public class Main{
 					continue;
 				}
 				
-				
 				System.out.println("Sua sequencia ajustada:");
-				for(int i : arr2){
+				for(int i : arr2)
+				{
 					System.out.print(i + ", ");
 				}
 				System.out.println();
-				
 			}
 			input.close();
 		}
